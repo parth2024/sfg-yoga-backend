@@ -13,25 +13,25 @@ export class CronService implements CronServiceInterface {
     private readonly axiosService: AxiosServiceInterface,
   ) {}
   // @Cron(CronExpression.MONDAY_TO_FRIDAY_AT_9)
-  @Cron("0 20 22 * * 1-6")
+  @Cron("0 0 02 * * 1-6")
   async kycStatus() {
     console.log('Send communication Cron');
     try {
-      const users = [{phone: '+919451765673', firstName: 'Rohit Ji'}, {phone: '+919792862723', firstName: 'Sumit Ji'}];
-      // const users = [
-      //   {phone: '+916392075010', firstName: 'Avaneesh Ji'}, 
-      //   {phone: '+919670238902', firstName: 'Shivam Ji'}, 
-      //   {phone: '+918423032276', firstName: 'Gyan Ji'}, 
-      //   {phone: '+918423090347', firstName: 'Harsha Ji'},
-      //   {phone: '+919205365997', firstName: 'Hemang Ji'}, 
-      //   {phone: '+919555184566', firstName: 'Narendra Ji'}, 
-      //   {phone: '+918433003469', firstName: 'Purvi Ji'}, 
-      //   {phone: '+916386039601', firstName: 'Shailja Ji'},
-      //   {phone: '+917458968889', firstName: 'Shivkant Ji'},
-      //   {phone: '+918924024755', firstName: 'Shyam Ji'},
-      //   {phone: '+9451765673', firstName: 'Rohit Ji'},
-      //   {phone: '+919792862723', firstName: 'Sumit Ji'}
-      // ];
+      // const users = [{phone: '+919451765673', firstName: 'Rohit Ji'}, {phone: '+919792862723', firstName: 'Sumit Ji'}];
+      const users = [
+        {phone: '+916392075010', firstName: 'Avaneesh Ji'}, 
+        {phone: '+919670238902', firstName: 'Shivam Ji'}, 
+        {phone: '+918423032276', firstName: 'Gyan Ji'}, 
+        {phone: '+918423090347', firstName: 'Harsha Ji'},
+        {phone: '+919205365997', firstName: 'Hemang Ji'}, 
+        {phone: '+919555184566', firstName: 'Narendra Ji'}, 
+        {phone: '+918433003469', firstName: 'Purvi Ji'}, 
+        {phone: '+916386039601', firstName: 'Shailja Ji'},
+        {phone: '+917458968889', firstName: 'Shivkant Ji'},
+        {phone: '+918924024755', firstName: 'Shyam Ji'},
+        {phone: '+9451765673', firstName: 'Rohit Ji'},
+        {phone: '+919792862723', firstName: 'Sumit Ji'}
+      ];
       for (let i = 0; i < users.length; i++) {
         console.log('Send communication Cron', users[i].phone);
         const user = users[i];
