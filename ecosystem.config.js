@@ -1,6 +1,6 @@
 export const apps = [
     {
-        name: "my-node-app",
+        name: "sfg-backend",
         script: "./src/main.ts",
         interpreter: "/usr/bin/node",
     },
