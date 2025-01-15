@@ -1,10 +1,8 @@
-module.exports = {
-    apps: [
-      {
+export const apps = [
+    {
         name: "my-node-app",
         script: "./src/main.ts",
         interpreter: "/usr/bin/node",
-      },
-    ],
-  };
+    },
+];
   
