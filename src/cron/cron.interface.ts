@@ -1,3 +1,3 @@
 export interface CronServiceInterface {
-  kycStatus(): Promise<void>;
+  sendWhatsappMessage(): Promise<void>;
 }
