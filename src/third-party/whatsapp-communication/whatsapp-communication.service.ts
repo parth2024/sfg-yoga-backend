@@ -1,7 +1,7 @@
 export class WhatsappMessages {
 
-    async personalTraining745(user: { phone: string, firstName: string }) {
-        return `🌸 Namaste ${user.firstName} 🙏
+    async personalTraining745(user: { phone: string, fName: string }) {
+        return `🌸 Namaste ${user.fName} Ji 🙏
         
 Here are the details for your upcoming yoga session:
             

@@ -6,33 +6,40 @@ import { LessThan, MoreThan } from 'typeorm';
 import { SendWhatsappCommunicationRequest } from 'src/third-party/whatsapp-communication/request-response';
 import { WhatsappCommunicationType } from 'src/common/enum';
 import { WhatsappMessages } from 'src/third-party/whatsapp-communication/whatsapp-communication.service';
+import { InjectModel } from '@nestjs/mongoose';
+import { User, UsersDocument } from 'src/users/users.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class CronService implements CronServiceInterface {
   constructor(
     @Inject('AxiosService')
     private readonly axiosService: AxiosServiceInterface,
+
+    @InjectModel(User.name)
+    private readonly usersModel: Model<UsersDocument>,
   ) { }
   // @Cron(CronExpression.MONDAY_TO_FRIDAY_AT_9)
   // @Cron("*/20 * * * * *")
   @Cron("0 0 02 * * 1-6")
   async sendWhatsappMessage() {
     const whatsappMessages = new WhatsappMessages()
-    // const users = [{ phone: '9451765673', firstName: 'Rohit Ji' }, { phone: '9792862723', firstName: 'Sumit Ji' }];
-    const users = [
-      {phone: '6392075010', firstName: 'Avaneesh Ji'}, 
-      {phone: '9670238902', firstName: 'Shivam Ji'}, 
-      {phone: '8423032276', firstName: 'Gyan Ji'}, 
-      {phone: '8423090347', firstName: 'Harsha Ji'},
-      {phone: '9205365997', firstName: 'Hemang Ji'}, 
-      {phone: '9555184566', firstName: 'Narendra Ji'}, 
-      {phone: '8433003469', firstName: 'Purvi Ji'}, 
-      {phone: '6386039601', firstName: 'Shailja Ji'},
-      {phone: '7458968889', firstName: 'Shivkant Ji'},
-      {phone: '8924024755', firstName: 'Shyam Ji'},
-      {phone: '9451765673', firstName: 'Rohit Ji'},
-      {phone: '9792862723', firstName: 'Sumit Ji'}
-    ];
+    const users = await this.usersModel.find().exec();
+    // const users = [{ phone: '9451765673', fName: 'Rohit' }, { phone: '9792862723', fName: 'Sumit' }];
+    // const users = [
+    //   {phone: '6392075010', fName: 'Avaneesh'}, 
+    //   {phone: '9670238902', fName: 'Shivam'}, 
+    //   {phone: '8423032276', fName: 'Gyan'}, 
+    //   {phone: '8423090347', fName: 'Harsha'},
+    //   {phone: '9205365997', fName: 'Hemang'}, 
+    //   {phone: '9555184566', fName: 'Narendra'}, 
+    //   {phone: '8433003469', fName: 'Purvi'}, 
+    //   {phone: '6386039601', fName: 'Shailja'},
+    //   {phone: '7458968889', fName: 'Shivkant'},
+    //   {phone: '8924024755', fName: 'Shyam'},
+    //   {phone: '9451765673', fName: 'Rohit'},
+    //   {phone: '9792862723', fName: 'Sumit'}
+    // ];
     await Promise.all(
       users.map(async (user) => {
         try {

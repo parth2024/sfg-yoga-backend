@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 // import { MySQLConfigModule } from './db-config/mysql.config.module';
 import { CronModule } from './cron/cron.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { MongoConfigModule } from './db-config/mongo.config.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -14,7 +16,10 @@ import { ScheduleModule } from '@nestjs/schedule';
     }),
     ScheduleModule.forRoot(),
     CronModule,
+    MongoConfigModule,
+    UsersModule,
     // MySQLConfigModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
