@@ -21,10 +21,10 @@ export class CronService implements CronServiceInterface {
   ) { }
   // @Cron(CronExpression.MONDAY_TO_FRIDAY_AT_9)
   // @Cron("*/20 * * * * *")
-  @Cron("0 0 02 * * 1-6")
+  @Cron("0 15 02 * * 1-6")
   async sendWhatsappMessage() {
     const whatsappMessages = new WhatsappMessages()
-    const users = await this.usersModel.find().exec();
+    const users = await this.usersModel.find({ isActive: true }).exec();
     // const users = [{ phone: '9451765673', fName: 'Rohit' }, { phone: '9792862723', fName: 'Sumit' }];
     // const users = [
     //   {phone: '6392075010', fName: 'Avaneesh'}, 
@@ -46,7 +46,7 @@ export class CronService implements CronServiceInterface {
           const sendWhatsappCommunicationRequestRequest = new SendWhatsappCommunicationRequest(
             WhatsappCommunicationType.PERSONAL,
             `+91${user.phone}`,
-            await whatsappMessages.personalTraining745(user));
+            await whatsappMessages.personalTraining800(user));
 
           const res = await this.axiosService.post(
             sendWhatsappCommunicationRequestRequest.url,
