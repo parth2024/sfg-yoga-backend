@@ -7,6 +7,7 @@ import { CronModule } from './cron/cron.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { MongoConfigModule } from './db-config/mongo.config.module';
 import { UsersModule } from './users/users.module';
+import { BatchesModule } from './batches/batches.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { UsersModule } from './users/users.module';
     MongoConfigModule,
     UsersModule,
     // MySQLConfigModule,
-    UsersModule
+    UsersModule,
+    BatchesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

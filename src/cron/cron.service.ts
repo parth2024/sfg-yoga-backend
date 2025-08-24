@@ -7,7 +7,7 @@ import { SendWhatsappCommunicationRequest } from 'src/third-party/whatsapp-commu
 import { WhatsappCommunicationType } from 'src/common/enum';
 import { WhatsappMessages } from 'src/third-party/whatsapp-communication/whatsapp-communication.service';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UsersDocument } from 'src/users/users.schema';
+import { User, UserDocument } from 'src/users/users.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class CronService implements CronServiceInterface {
     private readonly axiosService: AxiosServiceInterface,
 
     @InjectModel(User.name)
-    private readonly usersModel: Model<UsersDocument>,
+    private readonly usersModel: Model<UserDocument>,
   ) { }
   // @Cron(CronExpression.MONDAY_TO_FRIDAY_AT_9)
   // @Cron("*/20 * * * * *")

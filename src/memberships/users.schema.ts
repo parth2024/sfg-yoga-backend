@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument } from "mongoose";
 import { Gender } from "src/common/enum";
 
-export type UserDocument = HydratedDocument<User>;
+export type UsersDocument = HydratedDocument<User>;
 
 @Schema({ timestamps: true })
 export class User {
@@ -38,5 +38,5 @@ export class User {
 }
 
 
-export const UserSchema =
+export const UsersSchema =
     SchemaFactory.createForClass(User);
